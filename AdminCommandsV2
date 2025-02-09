@@ -1,20 +1,17 @@
+local SpamController = false
 while wait(1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
 
 
 
-for i,v in pairs(game.CoreGui:GetDescendants()) do
 
-if not v.Name ~= "T1" then
-
-
-
+if SpamController == false then
 
 local ParentGui = game.CoreGui
 local ScreenGui = Instance.new("ScreenGui")
 local TextButton1 = Instance.new("TextButton")
-
+ScreenGui.Name = "SOCommandsGui"
 
 ScreenGui.Parent = ParentGui
 
@@ -24,10 +21,16 @@ TextButton1.Name = "T1"
 TextButton1.Parent = ScreenGui
 
 
+
+
+
+
+
+
 TextButton1:TweenPosition(UDim2.new(0,144,0,50),"Out","Sine",1)
-TextButton1:TweenSize(UDim2.new(0,70,0,70),"Out","Sine",1)
+TextButton1:TweenSize(UDim2.new(0,120,0,90),"Out","Sine",1)
 TextButton1.BackgroundTransparency = 0.6
-TextButton1.TextTransparency = 0.7
+TextButton1.TextTransparency = 0.5
 TextButton1.BackgroundColor3 = Color3.fromRGB(7,230,51)
 TextButton1.TextColor3 = Color3.fromRGB(0,0,0)
 
@@ -48,11 +51,12 @@ end
 end)
 
 
+wait(0.1)
+SpamController = true
 
 end
-end
 plr.Chatted:Connect(function(msg)
-if TextButton1.Text == "Turn On Commands" then
+if game.CoreGui.SOCommandsGui.T1.Text == "Turn Off Commands" then
 
 if chr then
 local rootpart = chr:WaitForChild("HumanoidRootPart")
@@ -86,8 +90,36 @@ game.Workspace.MyPart:Destroy()
 
 end
 
+local Blacklist = {
 
-Humanoid.WalkSpeed = tonumber(string.match(msg, "^!Speed%s+(%d+)$"))
+"!Barrier",
+"!BarrierDestroy",
+"!UnBarrier",
+"!Barier",
+"!BarierDestoy",
+"!BarierDestroy",
+"!BarrierDestoy",
+"Barrier",
+"BarrierDestroy"
+
+
+}
+for _,v in ipairs(Blacklist) do
+
+KelimeSaptama = string.split(msg, " ")
+
+
+if KelimeSaptama[1] == "!Speed" then
+Humanoid.WalkSpeed = tonumber(KelimeSaptama[2])
+end
+
+if KelimeSaptama[1] == "!goto" then
+local PlayersCharacter = game.Workspace[KelimeSaptama[2]]
+local PlayersRoot = PlayersCharacter:FindFirstChild("HumanoidRootPart")
+rootpart.CFrame = PlayersRoot.CFrame
+end
+
+end
 
 end
 end
