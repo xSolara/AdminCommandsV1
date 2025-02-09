@@ -6,7 +6,7 @@ local chr = plr.Character
 
 for i,v in pairs(game.CoreGui:GetDescendants()) do
 
-if v.Name ~= "T1" then
+if not v.Name ~= "T1" then
 
 
 
