@@ -1,4 +1,4 @@
-local SpamController = false
+
 while wait(1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
@@ -6,57 +6,9 @@ local chr = plr.Character
 
 
 
-if SpamController == false then
 
-local ParentGui = game.CoreGui
-local ScreenGui = Instance.new("ScreenGui")
-local TextButton1 = Instance.new("TextButton")
-ScreenGui.Name = "SOCommandsGui"
-
-ScreenGui.Parent = ParentGui
-
-TextButton1.Name = "T1"
-
-
-TextButton1.Parent = ScreenGui
-
-
-
-
-
-
-
-
-TextButton1:TweenPosition(UDim2.new(0,144,0,50),"Out","Sine",1)
-TextButton1:TweenSize(UDim2.new(0,120,0,90),"Out","Sine",1)
-TextButton1.BackgroundTransparency = 0.6
-TextButton1.TextTransparency = 0.5
-TextButton1.BackgroundColor3 = Color3.fromRGB(7,230,51)
-TextButton1.TextColor3 = Color3.fromRGB(0,0,0)
-
-
-TextButton1.Text = "Turn Off Commands"
-
-
-TextButton1.TextScaled = true
-
-
-
-TextButton1.MouseButton1Click:Connect(function()
-if TextButton1.Text == "Turn Off Commands" then
-TextButton1.Text = "Turn On Commands"
-else
-TextButton1.Text = "Turn Off Commands"
-end
-end)
-
-
-wait(0.1)
-SpamController = true
-
-end
 plr.Chatted:Connect(function(msg)
-if game.CoreGui.SOCommandsGui.T1.Text == "Turn Off Commands" then
+
 
 if chr then
 local rootpart = chr:WaitForChild("HumanoidRootPart")
@@ -108,6 +60,9 @@ for _,v in ipairs(Blacklist) do
 
 KelimeSaptama = string.split(msg, " ")
 
+if KelimeSaptama[1] == "!JumpPower" then
+Humanoid.JumpPower = tonumber(KelimeSaptama[2])
+end
 
 if KelimeSaptama[1] == "!Speed" then
 Humanoid.WalkSpeed = tonumber(KelimeSaptama[2])
@@ -123,6 +78,6 @@ end
 
 end
 end
-end
+
 end)
 end
