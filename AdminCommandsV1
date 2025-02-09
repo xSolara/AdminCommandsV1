@@ -1,0 +1,96 @@
+while wait(1) do
+local plr = game.Players.LocalPlayer
+local chr = plr.Character
+
+
+
+for i,v in pairs(game.CoreGui:GetDescendants()) do
+
+if v.Name ~= "T1" then
+
+
+
+
+local ParentGui = game.CoreGui
+local ScreenGui = Instance.new("ScreenGui")
+local TextButton1 = Instance.new("TextButton")
+
+
+ScreenGui.Parent = ParentGui
+
+TextButton1.Name = "T1"
+
+
+TextButton1.Parent = ScreenGui
+
+
+TextButton1:TweenPosition(UDim2.new(0,144,0,50),"Out","Sine",1)
+TextButton1:TweenSize(UDim2.new(0,70,0,70),"Out","Sine",1)
+TextButton1.BackgroundTransparency = 0.6
+TextButton1.TextTransparency = 0.7
+TextButton1.BackgroundColor3 = Color3.fromRGB(7,230,51)
+TextButton1.TextColor3 = Color3.fromRGB(0,0,0)
+
+
+TextButton1.Text = "Turn Off Commands"
+
+
+TextButton1.TextScaled = true
+
+
+
+TextButton1.MouseButton1Click:Connect(function()
+if TextButton1.Text == "Turn Off Commands" then
+TextButton1.Text = "Turn On Commands"
+else
+TextButton1.Text = "Turn Off Commands"
+end
+end)
+
+
+
+end
+end
+plr.Chatted:Connect(function(msg)
+if TextButton1.Text == "Turn On Commands" then
+
+if chr then
+local rootpart = chr:WaitForChild("HumanoidRootPart")
+local Humanoid = chr:WaitForChild("Humanoid")
+
+
+if Humanoid then
+
+if msg == "!Kill" then
+
+Humanoid.Health = 0
+end
+
+if msg == "!Barrier" then
+
+
+local Part = Instance.new("Part")
+Part.Parent = game.Workspace
+Part.Name = "MyPart"
+Part.Anchored = true
+Part.Transparency = 0.7
+Part.Size = Vector3.new(10000,1,10000)
+Part.CFrame = rootpart.CFrame - Vector3.new(0,7,0)
+-- Press Execute
+
+end
+
+if msg == "!BarrierDestroy" then
+
+game.Workspace.MyPart:Destroy()
+
+end
+
+
+Humanoid.WalkSpeed = tonumber(string.match(msg, "^!Speed%s+(%d+)$"))
+
+end
+end
+end
+end)
+end
