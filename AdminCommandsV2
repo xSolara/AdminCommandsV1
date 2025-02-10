@@ -1,7 +1,9 @@
+local ClickForXray = false
 local NoclipEnabled = false
 while wait(1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
+local mouse = plr:GetMouse()
 
 local function Noclip()
 
@@ -51,6 +53,31 @@ if msg == "!Kill" then
 
 Humanoid.Health = 0
 end
+
+if msg == "!ClickForXray" then
+ClickForXray = true
+if ClickForXray == true then
+mouse.Button1Down:Connect(function()
+local instance = mouse.Target
+if instance:IsA("BasePart") and instance.Transparency ~= 0.6 and instance.CanCollide ~= false then
+instance.Transparency = 0.6
+instance.CanCollide = false
+else
+instance.CanCollide = true
+instance.Transparency = 0
+print(instance)
+end
+end)
+end
+end
+
+
+if msg == "!UnClickForXray" then
+
+ClickForXray = false
+
+end
+
 if msg == "!Noclip" then
 NoclipEnabled = true
 
