@@ -1,15 +1,15 @@
---!JumpPower -- Atlama için yanına miktar gir (rakam)
+--!JumpPower -- !JumpPower (number)
 
---!Speed -- Hızlanmak için Yanına Hız miktarını gir (rakam)
+--!Speed -- !Speed (number)
 
---!Barrier -- Altına Koruyucu Bir Bariyer Kurma
+--!Barrier -- Creates A Barrier Avoids Falling Down
 
---!BarrierDestroy -- Bariyeri Yok et
+--!BarrierDestroy -- Destroy the Barrier
 
---!goto -- Oyuncuya ışınlanma (yanına oyuncunun adını yaz)
+--!goto -- !goto (player's name)
 
---!Kill (Sadece Kendini Öldürür)
+--!Kill -- Only Kills Yourself
 
---!Noclip --Duvardan Geçme
+--!Noclip --Go Trough Walls
 
---!UnNoclip --Duvardan Geçme Kapatma
+--!UnNoclip --Disable Noclip
