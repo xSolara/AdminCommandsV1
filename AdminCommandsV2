@@ -5,6 +5,44 @@ local plr = game.Players.LocalPlayer
 local chr = plr.Character
 local mouse = plr:GetMouse()
 
+
+
+if ClickForXray == true and not game.CoreGui:FindFirstChild("WallXray") then
+
+local ParentGui = game.CoreGui
+local ScreenGui = Instance.new("ScreenGui")
+local TextButton1 = Instance.new("TextButton")
+
+ScreenGui.Parent = ParentGui
+
+TextButton1.Name = "T1"
+ScreenGui.Name = "WallXray"
+
+TextButton1.Parent = ScreenGui
+
+TextButton1:TweenPosition(UDim2.new(0,144,0,50),"Out","Sine",1)
+TextButton1:TweenSize(UDim2.new(0,130,0,90),"Out","Sine",1)
+TextButton1.BackgroundTransparency = 0.7
+TextButton1.TextTransparency = 0.4
+TextButton1.BackgroundColor3 = Color3.fromRGB(50,255,0)
+TextButton1.TextColor3 = Color3.fromRGB(0,0,0)
+
+TextButton1.Text = "Click Xray On"
+TextButton1.TextScaled = true
+
+TextButton1.MouseButton1Click:Connect(function()
+if TextButton1.Text == "Click Xray On" then
+
+TextButton1.Text = "Click Xray Off"
+else
+
+TextButton1.Text = "Click Xray On"
+end
+
+end)
+end
+
+
 local function Noclip()
 
 while wait(0.8) do
@@ -56,7 +94,8 @@ end
 
 if msg == "!ClickForXray" then
 ClickForXray = true
-if ClickForXray == true then
+if game.CoreGui:FindFirstChild("WallXray") then
+if ClickForXray == true and game.CoreGui.WallXray.T1.Text == "Click Xray On" then
 mouse.Button1Down:Connect(function()
 local instance = mouse.Target
 if instance:IsA("BasePart") and instance.Transparency ~= 0.6 and instance.CanCollide ~= false then
@@ -70,13 +109,12 @@ end
 end)
 end
 end
-
-
-if msg == "!UnClickForXray" then
-
-ClickForXray = false
-
+else
+wait(2)
 end
+
+
+
 
 if msg == "!Noclip" then
 NoclipEnabled = true
