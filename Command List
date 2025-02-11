@@ -15,3 +15,5 @@
 --!UnNoclip --Disable Noclip
 
 --!ClickForXray -- Click Walls to can go trough them
+
+--!ClickForDestroy --Click Objects to destroy them
