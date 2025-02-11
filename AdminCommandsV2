@@ -2,6 +2,12 @@ local ClickForXray = false
 local isGuiCreated = false
 local NoclipEnabled = false
 local WallXrayEnabled = true
+
+local GuiCreated = false
+local ClickDestroy = false
+local ClickDestroyEnabled = true
+
+
 while wait(1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
@@ -47,6 +53,48 @@ end)
 
 
 end
+
+if ClickDestroy == true and GuiCreated == false  then
+
+local ParentGui = game.CoreGui
+local ScreenGui2 = Instance.new("ScreenGui")
+local TextButton2 = Instance.new("TextButton")
+
+ScreenGui2.Parent = ParentGui
+
+TextButton2.Name = "TD"
+ScreenGui2.Name = "WallDestroy"
+
+TextButton2.Parent = ScreenGui2
+
+TextButton2:TweenPosition(UDim2.new(0,300,0,50),"Out","Sine",1)
+TextButton2:TweenSize(UDim2.new(0,130,0,90),"Out","Sine",1)
+TextButton2.BackgroundTransparency = 0.7
+TextButton2.TextTransparency = 0.4
+TextButton2.BackgroundColor3 = Color3.fromRGB(240,0,255)
+TextButton2.TextColor3 = Color3.fromRGB(0,0,0)
+
+TextButton2.Text = "Click Destroy On"
+TextButton2.TextScaled = true
+GuiCreated = true
+TextButton2.MouseButton1Click:Connect(function()
+if TextButton2.Text == "Click Destroy On" then
+
+TextButton2.Text = "Click Destroy Off"
+ClickDestroyEnabled = false
+else
+
+TextButton2.Text = "Click Destroy On"
+ClickDestroyEnabled = true
+end
+
+end)
+
+
+end
+
+
+
 
 local function Noclip()
 
@@ -121,6 +169,20 @@ end)
 
 end
 
+if msg == "!ClickForDestroy" then
+ClickDestroy = true
+mouse.Button1Down:Connect(function()
+if ClickDestroyEnabled == true then
+local instance = mouse.Target
+if instance:IsA("BasePart") then
+wait(0.3)
+instance:Destroy()
+end
+
+end
+
+end)
+end
 
 
 
