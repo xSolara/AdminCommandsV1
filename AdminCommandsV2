@@ -1,5 +1,7 @@
 local ClickForXray = false
+local isGuiCreated = false
 local NoclipEnabled = false
+local WallXrayEnabled = true
 while wait(1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
@@ -7,7 +9,7 @@ local mouse = plr:GetMouse()
 
 
 
-if ClickForXray == true and not game.CoreGui:FindFirstChild("WallXray") then
+if ClickForXray == true and isGuiCreated == false  then
 
 local ParentGui = game.CoreGui
 local ScreenGui = Instance.new("ScreenGui")
@@ -29,19 +31,22 @@ TextButton1.TextColor3 = Color3.fromRGB(0,0,0)
 
 TextButton1.Text = "Click Xray On"
 TextButton1.TextScaled = true
-
+isGuiCreated = true
 TextButton1.MouseButton1Click:Connect(function()
 if TextButton1.Text == "Click Xray On" then
 
 TextButton1.Text = "Click Xray Off"
+WallXrayEnabled = false
 else
 
 TextButton1.Text = "Click Xray On"
+WallXrayEnabled = true
 end
 
 end)
-end
 
+
+end
 
 local function Noclip()
 
@@ -94,23 +99,26 @@ end
 
 if msg == "!ClickForXray" then
 ClickForXray = true
-if game.CoreGui:FindFirstChild("WallXray") then
-if ClickForXray == true and game.CoreGui.WallXray.T1.Text == "Click Xray On" then
+
 mouse.Button1Down:Connect(function()
+if WallXrayEnabled == true then
 local instance = mouse.Target
 if instance:IsA("BasePart") and instance.Transparency ~= 0.6 and instance.CanCollide ~= false then
+wait(0.3)
 instance.Transparency = 0.6
 instance.CanCollide = false
 else
+wait(0.1)
 instance.CanCollide = true
 instance.Transparency = 0
 print(instance)
 end
+
+end
+
 end)
-end
-end
-else
-wait(2)
+
+
 end
 
 
@@ -165,9 +173,9 @@ local Blacklist = {
 
 
 }
-for _,v in ipairs(Blacklist) do
 
-KelimeSaptama = string.split(msg, " ")
+
+local KelimeSaptama = string.split(msg, " ")
 
 if KelimeSaptama[1] == "!JumpPower" then
 Humanoid.JumpPower = tonumber(KelimeSaptama[2])
@@ -181,7 +189,7 @@ if KelimeSaptama[1] == "!goto" then
 local PlayersCharacter = game.Workspace[KelimeSaptama[2]]
 local PlayersRoot = PlayersCharacter:FindFirstChild("HumanoidRootPart")
 rootpart.CFrame = PlayersRoot.CFrame
-end
+
 
 end
 
