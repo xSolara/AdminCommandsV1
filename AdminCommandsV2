@@ -209,7 +209,7 @@ Part.Parent = game.Workspace
 Part.Name = "MyPart"
 Part.Anchored = true
 Part.Transparency = 0.7
-Part.Size = Vector3.new(10000,1,10000)
+Part.Size = Vector3.new(5000,1,5000)
 Part.CFrame = rootpart.CFrame - Vector3.new(0,7,0)
 -- Press Execute
 
