@@ -113,7 +113,7 @@ end
 end
 end
 local function UnNoclip()
-
+wait(0.1)
 
 if NoclipEnabled == false then
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
@@ -187,11 +187,13 @@ end
 
 
 if msg == "!Noclip" then
+
 NoclipEnabled = true
 
 end
 
 if msg == "!UnNoclip" then
+wait(0.1)
 NoclipEnabled = false
 UnNoclip()
 end
@@ -240,14 +242,17 @@ local Blacklist = {
 local KelimeSaptama = string.split(msg, " ")
 
 if KelimeSaptama[1] == "!JumpPower" then
+wait(0.1)
 Humanoid.JumpPower = tonumber(KelimeSaptama[2])
 end
 
 if KelimeSaptama[1] == "!Speed" then
+wait(0.1)
 Humanoid.WalkSpeed = tonumber(KelimeSaptama[2])
 end
 
 if KelimeSaptama[1] == "!goto" then
+wait(0.1)
 local PlayersCharacter = game.Workspace[KelimeSaptama[2]]
 local PlayersRoot = PlayersCharacter:FindFirstChild("HumanoidRootPart")
 rootpart.CFrame = PlayersRoot.CFrame
