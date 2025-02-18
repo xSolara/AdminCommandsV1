@@ -16,7 +16,7 @@ local mouse = plr:GetMouse()
 
 
 if ClickForXray == true and isGuiCreated == false  then
-
+wait(0.1)
 local ParentGui = game.CoreGui
 local ScreenGui = Instance.new("ScreenGui")
 local TextButton1 = Instance.new("TextButton")
@@ -55,7 +55,7 @@ end)
 end
 
 if ClickDestroy == true and GuiCreated == false  then
-
+wait(0.1)
 local ParentGui = game.CoreGui
 local ScreenGui2 = Instance.new("ScreenGui")
 local TextButton2 = Instance.new("TextButton")
