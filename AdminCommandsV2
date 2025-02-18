@@ -203,7 +203,7 @@ end
 
 if msg == "!Barrier" then
 
-
+wait(0.2)
 local Part = Instance.new("Part")
 Part.Parent = game.Workspace
 Part.Name = "MyPart"
