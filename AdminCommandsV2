@@ -242,21 +242,31 @@ local Blacklist = {
 local KelimeSaptama = string.split(msg, " ")
 
 if KelimeSaptama[1] == "!JumpPower" then
+if Humanoid then
 wait(0.1)
 Humanoid.JumpPower = tonumber(KelimeSaptama[2])
+wait(0.2)
+Humanoid.JumpPower = tonumber(KelimeSaptama[2])
+end
 end
 
 if KelimeSaptama[1] == "!Speed" then
+
+if Humanoid then
 wait(0.1)
 Humanoid.WalkSpeed = tonumber(KelimeSaptama[2])
+wait(0.2)
+Humanoid.WalkSpeed = tonumber(KelimeSaptama[2])
+end
 end
 
 if KelimeSaptama[1] == "!goto" then
 wait(0.1)
 local PlayersCharacter = game.Workspace[KelimeSaptama[2]]
+if PlayersCharacter then
 local PlayersRoot = PlayersCharacter:FindFirstChild("HumanoidRootPart")
 rootpart.CFrame = PlayersRoot.CFrame
-
+end
 
 end
 
