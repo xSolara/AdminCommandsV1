@@ -10,7 +10,7 @@ local ClickDestroyEnabled = true
 
 while wait(1) do
 local plr = game.Players.LocalPlayer
-local chr = plr.Character
+local chr = plr.Character or plr.CharacterAdded:wait()
 local mouse = plr:GetMouse()
 
 
@@ -250,7 +250,7 @@ Humanoid.JumpPower = tonumber(KelimeSaptama[2])
 end
 end
 
-if KelimeSaptama[1] == "!Speed" then
+if KelimeSaptama[1] == "!Speed" or "!speed" then
 
 if Humanoid then
 wait(0.1)
