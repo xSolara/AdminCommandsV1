@@ -8,7 +8,7 @@ local ClickDestroy = false
 local ClickDestroyEnabled = true
 
 
-while wait(1) do
+while wait(0.1) do
 local plr = game.Players.LocalPlayer
 local chr = plr.Character or plr.CharacterAdded:wait()
 local mouse = plr:GetMouse()
