@@ -269,10 +269,10 @@ end
 
 if KelimeSaptama[1] == "!goto" then
 local PlayersCharacter = game.Workspace[KelimeSaptama[2]]
-if PlayersCharacter then
-local PlayersRoot = PlayersCharacter:FindFirstChild("HumanoidRootPart")
+
+local PlayersRoot = PlayersCharacter:WaitForChild("HumanoidRootPart")
 rootpart.CFrame = PlayersRoot.CFrame
-end
+
 
 
 end
