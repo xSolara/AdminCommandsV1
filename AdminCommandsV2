@@ -218,8 +218,12 @@ Part.CFrame = rootpart.CFrame - Vector3.new(0,7,0)
 end
 if msg == "!Xray" then
 for i,v in pairs(game.Workspace:GetDescendants()) do
+if not v:FindFirstChild("Humanoid") then
+if v:IsA("BasePart") then
 
 v.Transparency = 0.7
+end
+end
 end
 
 
