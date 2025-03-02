@@ -216,6 +216,14 @@ Part.CFrame = rootpart.CFrame - Vector3.new(0,7,0)
 -- Press Execute
 
 end
+if msg == "!Xray" then
+for i,v in pairs(game.Workspace:GetDescendants()) do
+
+v.Transparency = 0.7
+end
+
+
+end
 
 if msg == "!BarrierDestroy" then
 
